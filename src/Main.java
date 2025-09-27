@@ -78,14 +78,15 @@ public class Main
                                 String sName = sc.next();
                                 System.out.print("Enter receiver Name: ");
                                 String rName = sc.next();
-                                System.out.print("Enter weight (g): ");
-                                double w = sc.nextDouble();
                                 Customer sender = service.getCustomerByName(sName);
                                 Customer receiver = service.getCustomerByName(rName);
                                 if (sender != null && receiver != null)
+                                {
+                                    service.addLetter(sender, receiver);
                                     System.out.println("Letter Sent Successfully.");
+                                }
                                 else
-                                    System.out.println("Invalid sender/receiver ID.");
+                                    System.out.println("Invalid sender/receiver.");
                                 break;
 
                             case 2:
@@ -101,9 +102,12 @@ public class Main
                                 Customer psender = service.getCustomerByName(psName);
                                 Customer preceiver = service.getCustomerByName(prName);
                                 if (psender != null && preceiver != null)
+                                {
+                                    service.addParcel(psender, preceiver, pw, contents);
                                     System.out.println("Parcel Sent Successfully");
+                                }
                                 else
-                                    System.out.println("Invalid sender/receiver ID.");
+                                    System.out.println("Invalid sender/receiver");
                                 break;
 
                             case 3:
@@ -116,9 +120,12 @@ public class Main
                                 Customer msender = service.getCustomerByName(msName);
                                 Customer mreceiver = service.getCustomerByName(mrName);
                                 if (msender != null && mreceiver != null)
+                                {
+                                    service.addMoneyOrder(msender, mreceiver, amount);
                                     System.out.println("Money Order Sent Successfully");
+                                }
                                 else
-                                    System.out.println("Invalid sender/receiver ID.");
+                                    System.out.println("Invalid sender/receiver");
                                 break;
                         }
                     } while (choice2 != 0);

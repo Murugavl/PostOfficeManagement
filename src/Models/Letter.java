@@ -4,10 +4,9 @@ public class Letter extends PostalItem
 {
     private double weight;
 
-    public Letter(int itemId, Customer sender, Customer receiver, double cost, double weight)
+    public Letter(int itemId, Customer sender, Customer receiver, double cost)
     {
         super(itemId, sender, receiver, cost);
-        this.weight = weight;
     }
 
     @Override

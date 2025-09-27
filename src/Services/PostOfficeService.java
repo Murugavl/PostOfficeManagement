@@ -33,28 +33,25 @@ public class PostOfficeService
         return null;
     }
 
-    public PostalItem addLetter(Customer sender, Customer receiver, double weight)
+    public void addLetter(Customer sender, Customer receiver)
     {
-        double cost = weight * 2;
-        Letter letter = new Letter(itemIdCounter++, sender, receiver, cost, weight);
+        double cost = 50;
+        Letter letter = new Letter(itemIdCounter++, sender, receiver, cost);
         items.add(letter);
-        return letter;
     }
 
-    public PostalItem addParcel(Customer sender, Customer receiver, double weight, String contents)
+    public void addParcel(Customer sender, Customer receiver, double weight, String contents)
     {
         double cost = weight * 5;
         Parcel parcel = new Parcel(itemIdCounter++, sender, receiver, cost, weight, contents);
         items.add(parcel);
-        return parcel;
     }
 
-    public PostalItem addMoneyOrder(Customer sender, Customer receiver, double amount)
+    public void addMoneyOrder(Customer sender, Customer receiver, double amount)
     {
         double cost = amount * 0.02;
         MoneyOrder mo = new MoneyOrder(itemIdCounter++, sender, receiver, cost, amount);
         items.add(mo);
-        return mo;
     }
 
     public void showCustomers()
@@ -85,7 +82,7 @@ public class PostOfficeService
 
         System.out.printf("%-8s %-12s %-10s %-15s %-15s %-20s%n",
                 "ItemID", "Type", "Cost", "Sender", "Receiver", "Extra Info");
-        System.out.println("----------------------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------------------------");
 
         for (PostalItem p : items)
         {
